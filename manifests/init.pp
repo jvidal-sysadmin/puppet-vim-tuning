@@ -82,6 +82,7 @@ class vim_tuning (
     vim_tuning::vim_rc::extra_config { 'nerdtree': }
     vim_tuning::vim_rc::extra_config { 'vim-airline':  }
     vim_tuning::vim_rc::extra_config { 'vim-syntax-vcl': }
+    vim_tuning::vim_rc::extra_config { 'haproxy.vim': }
 
   }
 

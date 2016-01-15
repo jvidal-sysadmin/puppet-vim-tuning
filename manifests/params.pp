@@ -12,7 +12,7 @@ class vim_tuning::params {
         $plugins         = ['ctrlpvim/ctrlp.vim', 'scrooloose/nerdtree', 'rodjek/vim-puppet',
                             'scrooloose/syntastic', 'godlygeek/tabular', 'tomtom/tlib_vim',
                             'MarcWeber/vim-addon-mw-utils', 'bling/vim-airline', 'garbas/vim-snipmate',
-                            'honza/vim-snippets', 'pld-linux/vim-syntax-vcl']
+                            'honza/vim-snippets', 'pld-linux/vim-syntax-vcl', 'sclo/haproxy.vim']
       }
       default: {
       fail("Unsupported platform. Family: ${::osfamily}, OS: ${::operatingsystem}")
