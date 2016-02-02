@@ -11,8 +11,8 @@ class vim_tuning::params {
         $plugins_ensure  = 'present'
         $plugins         = ['ctrlpvim/ctrlp.vim', 'scrooloose/nerdtree', 'rodjek/vim-puppet',
                             'scrooloose/syntastic', 'godlygeek/tabular', 'tomtom/tlib_vim',
-                            'MarcWeber/vim-addon-mw-utils', 'bling/vim-airline', 'garbas/vim-snipmate',
-                            'honza/vim-snippets', 'pld-linux/vim-syntax-vcl', 'sclo/haproxy.vim']
+                            'MarcWeber/vim-addon-mw-utils', 'vim-airline/vim-airline', 'vim-airline/vim-airline-themes',
+                            'garbas/vim-snipmate', 'honza/vim-snippets', 'pld-linux/vim-syntax-vcl', 'sclo/haproxy.vim']
       }
       default: {
       fail("Unsupported platform. Family: ${::osfamily}, OS: ${::operatingsystem}")
