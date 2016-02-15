@@ -43,17 +43,34 @@ define vim_tuning::install (
       fail("Vim_tuning::Install[${user}]: 'extra_configs' must be either a Hash or an Array of Hashes")
     } else {
       $extra_configs.each |Hash $extra_config| {
-        $_extra_config = $extra_config['extra_config_name']
+        # Check "extra_config_title"
+        if $extra_config['extra_config_title'] != undef {
+          $_extra_config_title = $extra_config['extra_config_title']
+        } else {
+          fail('Variable "extra_config_title" is not be UNDEF or EMPTY')
+        }
+
+        # Check "extra_config_description"
+        if $extra_config['extra_config_description'] != undef {
+          $_extra_config_description = $extra_config['extra_config_description']
+        } else {
+          $_extra_config_description = undef
+        }
+
+        # Check "extra_config_content"
         if $extra_config['extra_config_content'] != undef {
           $_extra_config_content = $extra_config['extra_config_content']
         } else {
+          warning('Variable "extra_config_content" is UNDEF or EMPTY. Have you forgotten to include?')
           $_extra_config_content = undef
         }
 
-        vim_tuning::vim_rc::extra_config { "${user}_${_extra_config}_extra_config":
-          user                 => $user,
-          homedir              => $homedir,
-          extra_config_content => $_extra_config_content,
+        vim_tuning::vim_rc::extra_config { "${user}_${_extra_config_title}_extra_config":
+          user                     => $user,
+          homedir                  => $homedir,
+          extra_config_title       => $_extra_config_title,
+          extra_config_description => $_extra_config_description,
+          extra_config_content     => $_extra_config_content,
         }
       }
     }
