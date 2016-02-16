@@ -6,14 +6,10 @@ define vim_tuning::install (
   $vimrc_custom_content = undef,
   $extra_configs        = undef,
 ) {
-
-  # TODO: Para dejarlo fino del todo, habria que crear una variable mas llamada extra config, que fuera
-  # un hash y que llamara al DEFINED de extra_config para poder usar este DEFINED para todo y no usar los DEFINED privados :D
   
   if $user == undef or $homedir == undef {
     fail('Variables $user and $homedir are required.')
   }
-
 
   vim_tuning::vim_pathogen { "${user}_pathogen":
     user           => $user,
