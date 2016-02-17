@@ -3,14 +3,12 @@
 #### Table of Contents
 
 1. [Description](#description)
-1. [Setup - The basics of getting started with vim_tuning](#setup)
-    * [What vim_tuning affects](#what-vim_tuning-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with vim_tuning](#beginning-with-vim_tuning)
-1. [Usage - Configuration options and additional functionality](#usage)
-1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-1. [Limitations - OS compatibility, etc.](#limitations)
-1. [Development - Guide for contributing to the module](#development)
+2. [Setup - The basics of getting started with vim_tuning](#setup)
+    - [Beginning with vim_tuning](#beginning-with-vim_tuning)
+3. [Usage - Configuration options and additional functionality](#usage)
+4. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+5. [Limitations - OS compatibility, etc.](#limitations)
+6. [Development - Guide for contributing to the module](#development)
 
 ## Description
 
@@ -20,34 +18,29 @@ Basically, we can customize each system user with different combinations of conf
 
 ## Setup
 
-### What vim_tuning affects **OPTIONAL**
+**What the apache Puppet module affects:**
 
-If it's obvious what your module touches, you can skip this section. For
-example, folks can probably figure out that your mysql_instance module affects
-their MySQL instances.
-
-If there's more that they should know about, though, this is the place to mention:
-
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you might want to include an additional "Upgrading" section
-here.
+- Configuration files and directories (created and written to).
+- Package/configuration files for Vim.
+- GitHub repositories.
 
 ### Beginning with vim_tuning
 
-The very basic steps needed for a user to get the module up and running. This
-can include setup steps, if necessary, or it can be an example of the most
-basic use of the module.
+To have Puppet configure vim with the default parameters for **root** user, just declare the `vim-tuning` class:
 
+``` puppet
+class { 'vim-tuning': }
+```
+
+The Puppet module applies a default configuration. These defaults works well in Puppet develoment environments but you can customize the class's parameters to suit your preferences. 
+
+You can customize parameters when declaring the `vim-tuning` class. For instance, this declaration installs `vim` without vim plugins, allowing you to customize all configurations and plugins:
+
+``` puppet
+class { 'vim-tuning':
+  default_root_install => false,
+}
+```
 ## Usage
 
 This section is where you describe how to customize, configure, and do the
