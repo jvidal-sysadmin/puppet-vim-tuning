@@ -3,39 +3,21 @@
 #
 # Install plugins for vim and config vimrc for the system user. By default this class install and configure the perfect plugins combination to develop with Puppet mainly.
 #
-# Parameters
-# ----------
+# Parameters:
 #
-# Document parameters here.
+# Actions:
+#   - Install vim
+#   - Manage ~/.vimrc
+#   - Install and manage vim plugins
 #
-# * `sample parameter`
-# Explanation of what this parameter affects and what it defaults to.
-# e.g. "Specify one or more upstream ntp servers as an array."
+# Requires:
 #
-# Variables
-# ----------
-#
-# Here you should define a list of variables that this module would require.
-#
-# * `sample variable`
-#  Explanation of how this variable affects the function of this class and if
-#  it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#  External Node Classifier as a comma separated list of hostnames." (Note,
-#  global variables should be avoided in favor of class parameters as
-#  of Puppet 2.6.)
-#
-# Examples
-# --------
-#
-# @example
-#    class { 'vim_tuning':
-#      servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
-#    }
+# Sample Usage:
 #
 # Authors
 # -------
 #
-# Jorge Vidal <jvidal@blackhole.es>
+# Jorge Vidal <jvidal@syspixel.com>
 #
 # Copyright
 # ---------
