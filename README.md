@@ -7,6 +7,11 @@
     - [Beginning with vim_tuning](#beginning-with-vim_tuning)
 3. [Usage - Configuration options and additional functionality](#usage)
 4. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+    - [Public classes](#public-classes)
+    - [Private classes](#private-classes)
+    - [Public defined types](#public-defined-types)
+    - [Private defined types](#private-defined-types)
+    - [Templates](#templates)
 5. [Limitations - OS compatibility, etc.](#limitations)
 6. [Development - Guide for contributing to the module](#development)
 
@@ -43,16 +48,37 @@ class { 'vim-tuning':
 ```
 ## Usage
 
-This section is where you describe how to customize, configure, and do the
-fancy stuff with your module here. It's especially helpful if you include usage
-examples and code samples for doing things with your module.
+The default `vim-tuning`][] class manage vim package and sets up root user with optimize settings and the best known plugins.
+
+To configure another system user you must use `vim-tuning::install`defined type.
+
+> **Note**: See the [`vim-tuning::install`](#defined-type-vim-tuninginstall) defined type's reference for a list of all virtual host parameters.
 
 ## Reference
 
-Here, include a complete list of your module's classes, types, providers,
-facts, along with the parameters for each. Users refer to this section (thus
-the name "Reference") to find specific details; most users don't read it per
-se.
+## Reference
+
+- [**Public classes**](#public-classes)
+    - [Class: vim-tuning](#class-vim-tuning)
+- [**Private classes**](#private-classes)
+- [**Public defined types**](#public-defined-types)
+    - [Defined type: vim-tuning::install](#defined-type-vim-tuninginstall)
+- [**Private defined types**](#private-defined-types)
+- [**Templates**](#templates)
+
+### Public Classes
+
+#### Class: vim-tuning
+
+### Private Classes
+
+### Public defined types
+
+#### Defined type: vim-tuning::install
+
+### Private defined types
+
+### Templates
 
 ## Limitations
 
