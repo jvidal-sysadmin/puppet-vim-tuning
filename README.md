@@ -56,8 +56,6 @@ To configure another system user you must use `vim-tuning::install`defined type.
 
 ## Reference
 
-## Reference
-
 - [**Public classes**](#public-classes)
     - [Class: vim-tuning](#class-vim-tuning)
 - [**Private classes**](#private-classes)
