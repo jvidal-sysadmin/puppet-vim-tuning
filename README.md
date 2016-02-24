@@ -20,7 +20,7 @@
 
 ## Description
 
-This [Puppet module](https://docs.puppetlabs.com/puppet/latest/reference/modules_fundamentals.html) simplifies the [vim](http://www.vim.org/) personalisation (.vimrc file) by a clean and orderly way. In addition to install and maintain [pathogen](https://github.com/tpope/vim-pathogen) also is responsible for installing and updating GitHub third-party plugins such as [vim-puppet](https://github.com/rodjek/vim-puppet), [syntastic](https://github.com/scrooloose/syntastic) or [vim-airline](https://github.com/vim-airline/vim-airline).
+This [Puppet module](https://docs.puppetlabs.com/puppet/latest/reference/modules_fundamentals.html) simplifies the [vim](http://www.vim.org/) personalisation (.vimrc file) by a clean and orderly way. In addition to install and maintain [pathogen](https://github.com/tpope/vim-pathogen) and `vim` package, `vim-tuning` also is responsible for installing and updating GitHub third-party plugins such as [vim-puppet](https://github.com/rodjek/vim-puppet), [syntastic](https://github.com/scrooloose/syntastic) or [vim-airline](https://github.com/vim-airline/vim-airline).
 
 Basically, we can customize each system user with different combinations of configurations and plugins. We can also reuse those configurations and create new ones in a cleaner way.
 
@@ -141,19 +141,49 @@ vim_tuning::install { 'username2':
 - [**Public defined types**](#public-defined-types)
     - [Defined type: vim-tuning::install](#defined-type-vim-tuninginstall)
 - [**Private defined types**](#private-defined-types)
+    - [Defined type: vim_tuning::vim_rc::extra_config](#defined-type-vim-tuningvim-rcextra-config)
 - [**Templates**](#templates)
 
 ### Public Classes
 
-#### Class: vim-tuning
+#### Class: `vim-tuning`
 
 ### Private Classes
 
 ### Public defined types
 
-#### Defined type: vim-tuning::install
+#### Defined type: `vim-tuning::install`
+
+It is responsible for setting the vim environment for each system user. This is the main defined type you must use.
+
+##### `user`
+
+Indicates the name of the user that affect this configuration. **It's mandatory**. Default: undef.
+
+##### `homedir`
+
+The absolute home directory of the user concerned. **It's mandatory**. Default: undef.
+
+##### `plugins_ensure`
+
+The basic state that the plugins should be in. Valid options: 'present', 'absent' and 'latest'. Default: 'present'.
+
+##### `plugins`
+
+It must contain you want to download, install and maintain. If it's set to `undef` then default plugins will be installed. Note the name of plugins is built by `'githubuser/reponame'`. Valid options: A string, an array of strings, or undef. Default: undef.
+
+##### `vimrc_custom_content`
+
+With this parameter we can introduce arbitrary code. You can use the functions of "source" or "template" or even concatinate lines with "\ n". Valid options: Strings. Default: undef.
+
+##### `extra_configs`
+
+Con este parametro podremos construir muchas configuraciones estructuradas. Go to [`vim_tuning::vim_rc::extra_config`](#defined-type-vim-tuningvim-rcextra_config) for hash details. Valid options: Hash, an array of hashes, or undef. Default: undef.
 
 ### Private defined types
+
+#### Defined type: `vim_tuning::vim_rc::extra_config`
+
 
 ### Templates
 
