@@ -6,6 +6,9 @@
 2. [Setup - The basics of getting started with vim_tuning](#setup)
     - [Beginning with vim_tuning](#beginning-with-vim_tuning)
 3. [Usage - Configuration options and additional functionality](#usage)
+    - [Configuring with custom plugins](#configuring-with-custom-plugins)
+    - [Adding custom arbitrary configurations](#adding-custom-arbitrary-configurations)
+    - [Adding several structural configurations](#adding-several-structural-configurations)
 4. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
     - [Public classes](#public-classes)
     - [Private classes](#private-classes)
@@ -23,7 +26,7 @@ Basically, we can customize each system user with different combinations of conf
 
 ## Setup
 
-**What the apache Puppet module affects:**
+**What the vim-tuning Puppet module affects:**
 
 - Configuration files and directories (created and written to).
 - Package/configuration files for Vim.
@@ -48,11 +51,87 @@ class { 'vim-tuning':
 ```
 ## Usage
 
-The default `vim-tuning`][] class manage vim package and sets up root user with optimize settings and the best known plugins.
+The default [`vim-tuning`](#class-vim-tuning) class manage vim package and sets up root user with optimize settings and the best known plugins.
 
 To configure another system user you must use `vim-tuning::install`defined type.
 
 > **Note**: See the [`vim-tuning::install`](#defined-type-vim-tuninginstall) defined type's reference for a list of all virtual host parameters.
+
+To configure default vim environment to some system user just set two next mandatory parameters:
+
+``` puppet
+vim_tuning::install { 'username1':
+    user    => 'username1',
+    homedir => '/home/username1',
+}
+```
+
+### Configuring with custom plugins
+
+Just overwride `plugins` parameter. Note the name of plugins is built by `'githubuser/reponame'`:
+
+``` puppet
+vim_tuning::install { 'username1':
+    user    => 'username1',
+    homedir => '/home/username1',
+    plugins => ['pld-linux/vim-syntax-vcl', 'rodjek/vim-puppet'],
+}
+```
+> **Note**: Only github repositories are supported actually.
+
+### Adding custom arbitrary configurations
+
+Sometimes we just want to add some lines:
+
+``` puppet
+vim_tuning::install { 'username1':
+    user                 => 'username1',
+    homedir              => '/home/username1',
+    plugins              => ['pld-linux/vim-syntax-vcl', 'rodjek/vim-puppet'],
+    vimrc_custom_content => 'set backgound=dark',
+}
+```
+
+Files and templates are supported.
+
+### Adding several structural configurations
+
+This is useful to keep order and to combine configurations between multiple users using shared files/templates:
+
+``` puppet
+vim_tuning::install { 'username1':
+    user                 => 'username1',
+    homedir              => '/home/username1',
+    plugins              => ['pld-linux/vim-syntax-vcl', 'rodjek/vim-puppet'],
+    vimrc_custom_content => 'set backgound=dark',
+    extra_configs        => [
+      {
+        extra_config_title       => 'Vim VCL Highlighting',
+        extra_config_description => 'https://github.com/pld-linux/vim-syntax-vcl',
+        extra_config_content     => template('vim_tuning/vim-syntax-vcl_plugin.erb'),
+      },
+      {
+        extra_config_title       => 'Other Config',
+        extra_config_description => 'enables syntax highlighting by default',
+        extra_config_content     => 'syntax on',
+      },
+    ],
+}
+
+vim_tuning::install { 'username2':
+    user                 => 'username2',
+    homedir              => '/home/username2',
+    plugins              => ['pld-linux/vim-syntax-vcl'],
+    vimrc_custom_content => 'set backgound=light',
+    extra_configs        => [
+      {
+        extra_config_title       => 'Vim VCL Highlighting',
+        extra_config_description => 'https://github.com/pld-linux/vim-syntax-vcl',
+        extra_config_content     => template('vim_tuning/vim-syntax-vcl_plugin.erb'),
+      },
+    ],
+}
+```
 
 ## Reference
 
