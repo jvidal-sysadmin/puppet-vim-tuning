@@ -138,17 +138,27 @@ vim_tuning::install { 'username2':
 - [**Public classes**](#public-classes)
     - [Class: vim_tuning](#class-vim_tuning)
 - [**Private classes**](#private-classes)
+    - [Class: vim_tuning::params](#class-vim_tuningparams)
 - [**Public defined types**](#public-defined-types)
     - [Defined type: vim_tuning::install](#defined-type-vim_tuninginstall)
 - [**Private defined types**](#private-defined-types)
     - [Defined type: vim_tuning::vim_rc::extra_config](#defined-type-vim_tuningvim_rcextra_config)
+    - [Defined type: vim_tuning::vim_pathogen](#defined-type-vim_tuningvim_pathogen)
+    - [Defined type: vim_tuning::vim_plugins](#defined-type-vim_tuningvim_plugins)
+    - [Defined type: vim_tuning::vim_rc](#defined-type-vim_tuningvim_rc)
 - [**Templates**](#templates)
 
 ### Public Classes
 
 #### Class: `vim_tuning`
 
+Manage `vim` package and install vim environment over root user with default values.
+
 ### Private Classes
+
+#### Class: `vim_tuning::params`
+
+Compatibility checks and defaults value parameters.
 
 ### Public defined types
 
@@ -200,7 +210,21 @@ Description of the configuration. This value will be used to build the comment i
 
 Content settings. Valid options: Strings. Default: undef.
 
+#### Defined type: `vim_tuning::vim_pathogen`
+
+Install [`pathogen`](https://github.com/tpope/vim-pathogen), directory structure and dependencies. No configuration is required.
+
+#### Defined type: `vim_tuning::vim_plugins`
+
+Install plugins defined in the `plugins` value into `~/.vim/bundle/`directory. No configuration is required.
+
+#### Defined type: `vim_tuning::vim_rc`
+
+Concat all configuration fragments into `~/.vimrc` file. No configuration is required.
+
 ### Templates
+
+The vim_tuning module relies heavily on templates. These templates are built based on Facter facts specific to your operating system. Unless explicitly called out, most templates are not meant for configuration.
 
 ## Limitations
 
