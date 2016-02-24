@@ -20,13 +20,13 @@
 
 ## Description
 
-This [Puppet module](https://docs.puppetlabs.com/puppet/latest/reference/modules_fundamentals.html) simplifies the [vim](http://www.vim.org/) personalisation (.vimrc file) by a clean and orderly way. In addition to install and maintain [pathogen](https://github.com/tpope/vim-pathogen) and `vim` package, `vim-tuning` also is responsible for installing and updating GitHub third-party plugins such as [vim-puppet](https://github.com/rodjek/vim-puppet), [syntastic](https://github.com/scrooloose/syntastic) or [vim-airline](https://github.com/vim-airline/vim-airline).
+This [Puppet module](https://docs.puppetlabs.com/puppet/latest/reference/modules_fundamentals.html) simplifies the [vim](http://www.vim.org/) personalisation (.vimrc file) by a clean and orderly way. In addition to install and maintain [pathogen](https://github.com/tpope/vim-pathogen) and `vim` package, `vim_tuning` also is responsible for installing and updating GitHub third-party plugins such as [vim-puppet](https://github.com/rodjek/vim-puppet), [syntastic](https://github.com/scrooloose/syntastic) or [vim-airline](https://github.com/vim-airline/vim-airline).
 
 Basically, we can customize each system user with different combinations of configurations and plugins. We can also reuse those configurations and create new ones in a cleaner way.
 
 ## Setup
 
-**What the vim-tuning Puppet module affects:**
+**What the vim_tuning Puppet module affects:**
 
 - Configuration files and directories (created and written to).
 - Package/configuration files for Vim.
@@ -168,6 +168,8 @@ The absolute home directory of the user concerned. **It's mandatory**. Default: 
 
 The basic state that the plugins should be in. Valid options: 'present', 'absent' and 'latest'. Default: 'present'.
 
+> **IMPORTANT**: Use the value `"latest"` can dramatically increase the runtime agent puppet. Please, use it carefully.
+
 ##### `plugins`
 
 It must contain you want to download, install and maintain. If it's set to `undef` then default plugins will be installed. Note the name of plugins is built by `'githubuser/reponame'`. Valid options: A string, an array of strings, or undef. Default: undef.
@@ -184,21 +186,30 @@ Con este parametro podremos construir muchas configuraciones estructuradas. Go t
 
 #### Defined type: `vim_tuning::vim_rc::extra_config`
 
+Build fragment configuration to concatenate it with the rest.
+
+##### `extra_config_title`
+
+Main title of the configuration. This value will be used to construct the comment in the configuration file. **It's mandatory**. Valid options: Strings. Default: undef.
+
+##### `extra_config_description`
+
+Description of the configuration. This value will be used to build the comment in combination with the `extra_config_title`. Valid options: Strings. Default: undef.
+
+##### `extra_config_content`
+
+Content settings. Valid options: Strings. Default: undef.
 
 ### Templates
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc. If there
-are Known Issues, you might want to include them under their own heading here.
+None at the moment :)
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+This development has been possible thanks to the time given by [`Syspixel`](http://www.syspixel.com/). Thank my [`colleagues`](http://www.syspixel.com/sobre-nosotros/) for putting up during the project.
 
-## Release Notes/Contributors/Etc. **Optional**
+## Release Notes/Contributors/Etc.
 
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You can also add any additional sections you feel
-are necessary or important to include here. Please use the `## ` header.
+Nothing here, nothing there... hocus pocus!
