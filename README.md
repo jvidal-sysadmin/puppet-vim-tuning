@@ -204,12 +204,12 @@ Content settings. Valid options: Strings. Default: undef.
 
 ## Limitations
 
-None at the moment :)
+This module is only compatible with versions 4.x or higher. At the moment I have no plans to extend backward compatibility.
 
 ## Development
 
-This development has been possible thanks to the time given by [`Syspixel`](http://www.syspixel.com/). Thank my [`colleagues`](http://www.syspixel.com/sobre-nosotros/) for putting up during the project.
+None at the moment.
 
 ## Release Notes/Contributors/Etc.
 
-Nothing here, nothing there... hocus pocus!
+This development has been possible thanks to the time given by [`Syspixel`](http://www.syspixel.com/). Thank my [`colleagues`](http://www.syspixel.com/sobre-nosotros/) for putting up during the project.
