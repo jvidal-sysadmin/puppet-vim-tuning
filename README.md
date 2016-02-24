@@ -139,9 +139,9 @@ vim_tuning::install { 'username2':
     - [Class: vim-tuning](#class-vim-tuning)
 - [**Private classes**](#private-classes)
 - [**Public defined types**](#public-defined-types)
-    - [Defined type: vim-tuning::install](#defined-type-vim-tuninginstall)
+    - [Defined type: vim_tuning::install](#defined-type-vim_tuninginstall)
 - [**Private defined types**](#private-defined-types)
-    - [Defined type: vim_tuning::vim_rc::extra_config](#defined-type-vim-tuningvim-rcextra-config)
+    - [Defined type: vim_tuning::vim_rc::extra_config](#defined-type-vim_tuningvim_rcextra_config)
 - [**Templates**](#templates)
 
 ### Public Classes
