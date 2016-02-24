@@ -34,28 +34,28 @@ Basically, we can customize each system user with different combinations of conf
 
 ### Beginning with vim_tuning
 
-To have Puppet configure vim with the default parameters for **root** user, just declare the `vim-tuning` class:
+To have Puppet configure vim with the default parameters for **root** user, just declare the `vim_tuning` class:
 
 ``` puppet
-class { 'vim-tuning': }
+class { 'vim_tuning': }
 ```
 
 The Puppet module applies a default configuration. These defaults works well in Puppet develoment environments but you can customize the class's parameters to suit your preferences. 
 
-You can customize parameters when declaring the `vim-tuning` class. For instance, this declaration installs `vim` without vim plugins, allowing you to customize all configurations and plugins:
+You can customize parameters when declaring the `vim_tuning` class. For instance, this declaration installs `vim` without vim plugins, allowing you to customize all configurations and plugins:
 
 ``` puppet
-class { 'vim-tuning':
+class { 'vim_tuning':
   default_root_install => false,
 }
 ```
 ## Usage
 
-The default [`vim-tuning`](#class-vim-tuning) class manage vim package and sets up root user with optimize settings and the best known plugins.
+The default [`vim_tuning`](#class-vim_tuning) class manage vim package and sets up root user with optimize settings and the best known plugins.
 
-To configure another system user you must use `vim-tuning::install`defined type.
+To configure another system user you must use `vim_tuning::install`defined type.
 
-> **Note**: See the [`vim-tuning::install`](#defined-type-vim-tuninginstall) defined type's reference for a list of all virtual host parameters.
+> **Note**: See the [`vim_tuning::install`](#defined-type-vim_tuninginstall) defined type's reference for a list of all virtual host parameters.
 
 To configure default vim environment to some system user just set two next mandatory parameters:
 
@@ -136,7 +136,7 @@ vim_tuning::install { 'username2':
 ## Reference
 
 - [**Public classes**](#public-classes)
-    - [Class: vim-tuning](#class-vim-tuning)
+    - [Class: vim_tuning](#class-vim_tuning)
 - [**Private classes**](#private-classes)
 - [**Public defined types**](#public-defined-types)
     - [Defined type: vim_tuning::install](#defined-type-vim_tuninginstall)
@@ -146,13 +146,13 @@ vim_tuning::install { 'username2':
 
 ### Public Classes
 
-#### Class: `vim-tuning`
+#### Class: `vim_tuning`
 
 ### Private Classes
 
 ### Public defined types
 
-#### Defined type: `vim-tuning::install`
+#### Defined type: `vim_tuning::install`
 
 It is responsible for setting the vim environment for each system user. This is the main defined type you must use.
 
@@ -178,7 +178,7 @@ With this parameter we can introduce arbitrary code. You can use the functions o
 
 ##### `extra_configs`
 
-Con este parametro podremos construir muchas configuraciones estructuradas. Go to [`vim_tuning::vim_rc::extra_config`](#defined-type-vim-tuningvim-rcextra_config) for hash details. Valid options: Hash, an array of hashes, or undef. Default: undef.
+Con este parametro podremos construir muchas configuraciones estructuradas. Go to [`vim_tuning::vim_rc::extra_config`](#defined-type-vim_tuningvim_rcextra_config) for hash details. Valid options: Hash, an array of hashes, or undef. Default: undef.
 
 ### Private defined types
 
