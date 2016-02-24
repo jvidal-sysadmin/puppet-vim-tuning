@@ -5,6 +5,10 @@ define vim_tuning::vim_plugins (
   $plugins        = $vim_tuning::params::plugins,
 ) {
 
+  if $plugins_ensure !~ /^(present|absent|latest)$/ {
+    fail('"plugins_ensure" value must be (present|absent|latest)')
+  }
+
   # Download each repository from "plugins" in array format into "bundle" dir
   $plugins.each |String $plugin| {
     $reponame = regsubst($plugin,'.*/(.*)','\1')
