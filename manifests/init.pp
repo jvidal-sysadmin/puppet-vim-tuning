@@ -32,6 +32,7 @@ class vim_tuning (
   $default_plugins           = true,
   $default_root_install      = true,
   $vim_package               = $vim_tuning::params::vim_package,
+  $vim_ensure                = present,
   $manage_vim_package        = true,
   $vimrc_custom_content      = undef,
 ) inherits vim_tuning::params {
@@ -46,7 +47,7 @@ class vim_tuning (
   # Install vim if not defined or not installed
   if ! defined(Package[$vim_package]) and $manage_vim_package == true {
     package { $vim_package:
-      ensure  => present,
+      ensure  => $vim_ensure,
     }
   }
 
