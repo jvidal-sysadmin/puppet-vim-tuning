@@ -1,7 +1,9 @@
 # Class: vim_tuning
 # ===========================
 #
-# Install plugins for vim and config vimrc for the system user. By default this class install and configure the perfect plugins combination to develop with Puppet mainly.
+# Install plugins for vim and config vimrc for the system user.
+# By default this class install and configure the perfect plugins combination
+# to develop with Puppet mainly.
 #
 # Parameters:
 #
@@ -61,23 +63,28 @@ class vim_tuning (
       vimrc_custom_content      => $vimrc_custom_content,
       extra_configs             => [
         {
-          extra_config_title       => "NERD Tree",
-          extra_config_description => "https://github.com/scrooloose/nerdtree",
+          extra_config_title       => 'NERD Tree',
+          extra_config_description => 'https://github.com/scrooloose/nerdtree',
           extra_config_content     => template('vim_tuning/nerdtree_plugin.erb')
         },
         {
-          extra_config_title       => "Vim Airline",
-          extra_config_description => "https://github.com/bling/vim-airline",
+          extra_config_title       => 'Syntastic',
+          extra_config_description => 'https://github.com/scrooloose/syntastic#settings',
+          extra_config_content     => template('vim_tuning/syntastic_plugin.erb')
+        },
+        {
+          extra_config_title       => 'Vim Airline',
+          extra_config_description => 'https://github.com/bling/vim-airline',
           extra_config_content     => template('vim_tuning/vim-airline_plugin.erb')
         },
         {
-          extra_config_title       => "Vim VCL Highlighting",
-          extra_config_description => "https://github.com/pld-linux/vim-syntax-vcl",
+          extra_config_title       => 'Vim VCL Highlighting',
+          extra_config_description => 'https://github.com/pld-linux/vim-syntax-vcl',
           extra_config_content     => template('vim_tuning/vim-syntax-vcl_plugin.erb')
         },
         {
-          extra_config_title       => "Vim HAProxy Highlighting",
-          extra_config_description => "https://github.com/sclo/haproxy.vim",
+          extra_config_title       => 'Vim HAProxy Highlighting',
+          extra_config_description => 'https://github.com/sclo/haproxy.vim',
           extra_config_content     => template('vim_tuning/haproxy.vim_plugin.erb')
         },
       ],
