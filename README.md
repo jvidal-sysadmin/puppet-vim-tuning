@@ -190,7 +190,7 @@ With this parameter we can introduce arbitrary code. You can use the functions o
 
 ##### `extra_configs`
 
-Con este parametro podremos construir muchas configuraciones estructuradas. Go to [`vim_tuning::vim_rc::extra_config`](#defined-type-vim_tuningvim_rcextra_config) for hash details. Valid options: Hash, an array of hashes, or undef. Default: undef.
+With this parameter we can build many structured configurations. Go to [`vim_tuning::vim_rc::extra_config`](#defined-type-vim_tuningvim_rcextra_config) for hash details. Valid options: Hash, an array of hashes, or undef. Default: undef.
 
 ### Private defined types
 
